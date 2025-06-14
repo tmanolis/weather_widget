@@ -27,8 +27,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      /* Pour Notion - centrer verticalement */
+      /* CHANGEMENT CLÉ : utiliser flex-start au lieu de center */
+      justify-content: flex-start;
+      /* Pour Notion - s'adapter à la hauteur disponible */
       height: 100%;
       width: fit-content;
       max-width: 90vw;
@@ -47,6 +48,8 @@
       position: relative;
       /* Réduire le padding pour 250px */
       padding: 0 50px;
+      /* Ajouter un peu de marge en haut pour éviter de coller au bord */
+      margin-top: 0.5rem;
     }
     .city-block {
       display: flex;
@@ -158,6 +161,7 @@
       .header {
         padding: 0 50px;
         min-width: 250px;
+        margin-top: 0.3rem;
       }
       .current-icon {
         font-size: 2rem;
@@ -169,6 +173,7 @@
       .forecast-table {
         gap: 0.3rem;
         min-width: 220px;
+        padding: 0.5rem 0.2rem;
       }
       .city {
         font-size: 1.2em;
@@ -192,15 +197,38 @@
       .header {
         padding: 0 40px;
         min-width: 200px;
+        margin-top: 0.2rem;
+        margin-bottom: 0.5rem;
       }
       .current-icon {
         font-size: 1.8rem;
       }
       .forecast-table {
         gap: 0.2rem;
+        padding: 0.3rem 0.2rem;
       }
       .forecast-col .label {
         font-size: 0.7em;
+      }
+    }
+
+    /* Règles spéciales pour les hauteurs très réduites */
+    @media (max-height: 250px) {
+      .header {
+        margin-top: 0.2rem;
+        margin-bottom: 0.5rem;
+      }
+      .forecast-table {
+        padding: 0.3rem 0.2rem;
+      }
+      .city {
+        font-size: 1.1em;
+      }
+      .current-temp {
+        font-size: 1.1em;
+      }
+      .current-icon {
+        font-size: 1.8rem;
       }
     }
   </style>
