@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paris Météo Widget</title>
+  <!-- Import Inter font (modern, clean alternative) -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -11,11 +12,14 @@
       padding: 0;
       font-family: 'EB Garamond', serif;
       color: white;
-      background: url('background-widget.jpg');
+      background: background: url('background-widget.jpg');
       background-size: cover;
       background-position: center;
       min-height: 100vh;
       overflow: hidden;
+      /* Ajustements pour Notion */
+      height: 400px;
+      width: 100%;
     }
     .container {
       margin-top: 0.5rem;
@@ -23,24 +27,26 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* Permettre au container de s'adapter à son contenu */
+      justify-content: center;
+      /* Pour Notion - centrer verticalement */
+      height: 100%;
       width: fit-content;
       max-width: 90vw;
-      margin: 0.5rem auto;
+      margin: 0 auto;
     }
     /* HEADER */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      /* Remplacer width: 100% par min-width et permettre la flexibilité */
-      min-width: 300px;
+      /* Optimiser pour 250px de largeur */
+      min-width: 250px;
       width: max-content;
       max-width: 600px;
       margin-bottom: 1rem;
       position: relative;
-      /* Ajouter un padding pour éviter le chevauchement avec l'icône centrale */
-      padding: 0 60px;
+      /* Réduire le padding pour 250px */
+      padding: 0 50px;
     }
     .city-block {
       display: flex;
@@ -58,7 +64,7 @@
       white-space: nowrap;
     }
     .date {
-      font-size: 1em;
+      font-size: 0.8em; /* Réduire de 1em à 0.8em */
       white-space: nowrap;
       line-height: 1;
       opacity: 0.9;
@@ -78,7 +84,7 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      font-size: 3rem;
+      font-size: 2.5rem; /* Réduire légèrement pour 250px */
       line-height: 1;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     }
@@ -91,24 +97,28 @@
       min-width: max-content;
     }
     .current-label {
-      font-size: 1em;
+      font-size: 0.8em; /* Réduire pour 250px */
       margin: 0;
       opacity: 0.9;
       font-weight: 400;
       white-space: nowrap;
+      /* Limiter davantage la largeur pour 250px */
+      max-width: 80px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     /* FORECAST */
     .forecast-table {
       display: flex;
       justify-content: space-around;
-      /* Utiliser une largeur flexible */
+      /* Optimiser pour 250px */
       width: max-content;
-      min-width: 300px;
+      min-width: 250px;
       max-width: 600px;
       margin-top: 0rem;
-      padding: 1rem 0.5rem;
-      /* Ajouter un gap pour espacer les colonnes */
-      gap: 1rem;
+      padding: 1rem 0.2rem; /* Réduire le padding horizontal */
+      /* Réduire le gap pour 250px */
+      gap: 0.3rem;
     }
     .forecast-col {
       /* Supprimer flex: 1 et utiliser une largeur automatique */
@@ -140,24 +150,57 @@
       white-space: nowrap;
     }
 
-    /* Media queries pour les petits écrans */
+    /* Media queries pour Notion et petits écrans */
     @media (max-width: 480px) {
+      body {
+        height: 300px;
+      }
       .header {
-        padding: 0 40px;
+        padding: 0 50px;
         min-width: 250px;
       }
       .current-icon {
-        font-size: 2.5rem;
+        font-size: 2rem;
+      }
+      .current-label {
+        max-width: 70px;
+        font-size: 0.8em;
       }
       .forecast-table {
-        gap: 0.5rem;
-        min-width: 250px;
+        gap: 0.3rem;
+        min-width: 220px;
       }
       .city {
-        font-size: 1.3em;
+        font-size: 1.2em;
       }
       .current-temp {
-        font-size: 1.3em;
+        font-size: 1.2em;
+      }
+      .forecast-col .temp {
+        font-size: 1em;
+      }
+      .forecast-col .label {
+        font-size: 0.8em;
+      }
+    }
+
+    /* Ajustements spécifiques pour les très petites tailles de Notion */
+    @media (max-width: 350px) {
+      body {
+        height: 280px;
+      }
+      .header {
+        padding: 0 40px;
+        min-width: 200px;
+      }
+      .current-icon {
+        font-size: 1.8rem;
+      }
+      .forecast-table {
+        gap: 0.2rem;
+      }
+      .forecast-col .label {
+        font-size: 0.7em;
       }
     }
   </style>
