@@ -30,6 +30,19 @@ This is a **clean and responsive weather widget** for **Paris**, ideal for embed
 ## ⚙️ Customization
 Make changes inside `index.html` to customize the widget
 1. Change the **city**:
+   - Change the displayed city name:
+     Replace "PARIS" with your desired city name in:
+     ```html
+     <div class="city">PARIS ❀</div>
+     ```
+   - Change the coordinates and timezone for the API:
+     ```js
+     fetch("https://api.open-meteo.com/v1/forecastlatitude=48.8566&longitude=2.3522&hourly=temperature_2m,weathercode&current_weather=true&timezone=Europe%2FParis")
+     ```
+     Update the following values:
+     - `latitude` and `longitude`: Replace `48.8566` and `2.3522` with your city's coordinates.
+     - `timezone`: Replace `Europe%2FParis` with your city's IANA timezone, encoded for URLs (e.g., `America%2FNew_York`).
+  
 2. Change the style:
 - To change the style, edit the `background-image`, font or colors directly in CSS
 
