@@ -4,7 +4,6 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paris Météo Widget</title>
-  <!-- Import Inter font (modern, clean alternative) -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -12,55 +11,66 @@
       padding: 0;
       font-family: 'EB Garamond', serif;
       color: white;
-      background: url('background-widget.jpg');
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       background-size: cover;
       background-position: center;
       min-height: 100vh;
       overflow: hidden;
     }
     .container {
-      margin-top: 0.5rem; /* Réduire de 1rem à 0.5rem */
-      padding: 0.5rem 1rem; /* Réduire de 1rem 2rem à 0.5rem 1rem */
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
+      /* Permettre au container de s'adapter à son contenu */
+      width: fit-content;
+      max-width: 90vw;
+      margin: 0.5rem auto;
     }
     /* HEADER */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 100%;
-      max-width: 800px;
+      /* Remplacer width: 100% par min-width et permettre la flexibilité */
+      min-width: 300px;
+      width: max-content;
+      max-width: 600px;
       margin-bottom: 1rem;
       position: relative;
+      /* Ajouter un padding pour éviter le chevauchement avec l'icône centrale */
+      padding: 0 60px;
     }
     .city-block {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.3rem;
-      flex: 1;
+      /* Remplacer flex: 1 par une largeur automatique */
+      min-width: max-content;
     }
     .city {
-      font-size: 1.5em; /* Réduire de 2em à 1.5em */
+      font-size: 1.5em;
       font-weight: 700;
       line-height: 1;
       letter-spacing: -0.02em;
+      white-space: nowrap;
     }
     .date {
-      font-size: 1em; /* Réduire de 1.2em à 1em */
+      font-size: 1em;
       white-space: nowrap;
       line-height: 1;
       opacity: 0.9;
       font-weight: 400;
     }
     .current-temp {
-      font-size: 1.5em; /* Réduire de 2em à 1.5em */
+      font-size: 1.5em;
       line-height: 1;
       margin: 0;
       font-weight: 600;
       letter-spacing: -0.02em;
+      white-space: nowrap;
     }
     /* Icône centrée absolument */
     .current-icon {
@@ -77,25 +87,32 @@
       flex-direction: column;
       align-items: center;
       gap: 0.3rem;
-      flex: 1;
+      /* Remplacer flex: 1 par une largeur automatique */
+      min-width: max-content;
     }
     .current-label {
       font-size: 1em;
       margin: 0;
       opacity: 0.9;
       font-weight: 400;
+      white-space: nowrap;
     }
     /* FORECAST */
     .forecast-table {
       display: flex;
       justify-content: space-around;
-      width: 100%;
-      max-width: 800px;
+      /* Utiliser une largeur flexible */
+      width: max-content;
+      min-width: 300px;
+      max-width: 600px;
       margin-top: 0rem;
       padding: 1rem 0.5rem;
+      /* Ajouter un gap pour espacer les colonnes */
+      gap: 1rem;
     }
     .forecast-col {
-      flex: 1;
+      /* Supprimer flex: 1 et utiliser une largeur automatique */
+      min-width: max-content;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -109,6 +126,7 @@
       opacity: 0.8;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      white-space: nowrap;
     }
     .forecast-col .icon {
       font-size: 1.5em;
@@ -119,6 +137,28 @@
       line-height: 1;
       font-weight: 600;
       letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    /* Media queries pour les petits écrans */
+    @media (max-width: 480px) {
+      .header {
+        padding: 0 40px;
+        min-width: 250px;
+      }
+      .current-icon {
+        font-size: 2.5rem;
+      }
+      .forecast-table {
+        gap: 0.5rem;
+        min-width: 250px;
+      }
+      .city {
+        font-size: 1.3em;
+      }
+      .current-temp {
+        font-size: 1.3em;
+      }
     }
   </style>
 </head>
