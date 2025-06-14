@@ -28,8 +28,9 @@ This is a **clean and responsive weather widget** for **Paris**, ideal for embed
 4. Embed that URL into Notion using `/embed`
 
 ## ⚙️ Customization
-
-- To change the **city**, modify the coordinates in the API URL inside `index.html`
+Make changes inside `index.html` to customize the widget
+1. Change the **city**:
+2. Change the style:
 - To change the style, edit the `background-image`, font or colors directly in CSS
 
 ## 📜 License
